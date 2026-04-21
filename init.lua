@@ -187,6 +187,10 @@ vim.diagnostic.config {
   jump = { float = true },
 }
 
+-- Centered Scrolling
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { noremap = true })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { noremap = true })
+
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
@@ -817,15 +821,18 @@ require('lazy').setup({
     },
   },
 
+  -- Color Scheme
   {
-    'AlexvZyl/nordic.nvim',
+    'Shatur/neovim-ayu',
     lazy = false,
     priority = 1000,
     config = function()
-      require('nordic').setup {
-        italic_comments = false,
+      require('ayu').setup {
+        mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
+        terminal = true, -- Set to `false` to let terminal manage its own colors.
+        overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
       }
-      vim.cmd.colorscheme 'nordic'
+      vim.cmd.colorscheme 'ayu'
     end,
   },
 
