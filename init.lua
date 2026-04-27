@@ -105,7 +105,8 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = 'a'
+-- vim.o.mouse = 'a' -- All
+vim.o.mouse = '' -- Disabled
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -833,6 +834,8 @@ require('lazy').setup({
         overrides = {}, -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
       }
       vim.cmd.colorscheme 'ayu'
+      vim.api.nvim_set_hl(0, 'LineNr', { fg = '#666666', bg = 'NONE' })
+      vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#ff9900', bold = true })
     end,
   },
 
